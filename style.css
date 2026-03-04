@@ -320,3 +320,55 @@ h1 {
         opacity: 0;
     }
 }
+
+/* Responsive Design for Mobile Phone View */
+@media (max-width: 768px) {
+    .card {
+        padding: 2rem 1.5rem;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .name {
+        font-size: 3.5rem;
+    }
+
+    .power-level {
+        font-size: 1.5rem;
+    }
+
+    .message {
+        font-size: 1rem;
+    }
+
+    .action-btn {
+        padding: 12px 25px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 1.5rem 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .name {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+
+    .power-level {
+        font-size: 1.2rem;
+    }
+
+    .message {
+        font-size: 0.9rem;
+    }
+}
