@@ -1,0 +1,322 @@
+:root {
+    --bg-dark: #0a0a0c;
+    --neon-red: #ff1a1a;
+    --neon-blue: #0ff0ff;
+    --neon-purple: #9d00ff;
+    --text-glow-red: 0 0 10px rgba(255, 26, 26, 0.8), 0 0 20px rgba(255, 26, 26, 0.5);
+    --gold: #f5d300;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+    color: white;
+}
+
+/* Aura Background that pulsates */
+.aura-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200vw;
+    height: 200vh;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(157, 0, 255, 0.15) 0%, rgba(255, 26, 26, 0.05) 40%, rgba(10, 10, 12, 1) 70%);
+    z-index: -2;
+    animation: auraPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes auraPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Container & Edge Card */
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    perspective: 1000px;
+}
+
+.card {
+    background: rgba(20, 20, 25, 0.85);
+    border-left: 5px solid var(--neon-red);
+    border-right: 5px solid var(--neon-purple);
+    padding: 3rem;
+    text-align: center;
+    width: 90%;
+    max-width: 650px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+    position: relative;
+
+    /* Default visible state for button wrapper */
+    transform: rotateX(0deg) scale(1);
+    opacity: 1;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* After slashes (When content is revealed) */
+.card.active {
+    box-shadow: 0 0 30px rgba(255, 26, 26, 0.4), inset 0 0 20px rgba(157, 0, 255, 0.2);
+}
+
+/* Typography styles */
+.power-level {
+    font-family: 'Bangers', cursive;
+    color: var(--gold);
+    font-size: 2rem;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(245, 211, 0, 0.8);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s, transform 0.5s;
+    margin-bottom: 5px;
+}
+
+.power-level.ready {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1 {
+    font-size: 4rem;
+    margin: 15px 0;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+}
+
+/* Glitch Effect */
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--neon-red);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--neon-blue);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(10px, 9999px, 83px, 0);
+    }
+
+    20% {
+        clip: rect(62px, 9999px, 14px, 0);
+    }
+
+    40% {
+        clip: rect(21px, 9999px, 96px, 0);
+    }
+
+    60% {
+        clip: rect(98px, 9999px, 8px, 0);
+    }
+
+    80% {
+        clip: rect(34px, 9999px, 55px, 0);
+    }
+
+    100% {
+        clip: rect(76px, 9999px, 42px, 0);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip: rect(15px, 9999px, 93px, 0);
+    }
+
+    20% {
+        clip: rect(72px, 9999px, 24px, 0);
+    }
+
+    40% {
+        clip: rect(31px, 9999px, 86px, 0);
+    }
+
+    60% {
+        clip: rect(8px, 9999px, 18px, 0);
+    }
+
+    80% {
+        clip: rect(44px, 9999px, 65px, 0);
+    }
+
+    100% {
+        clip: rect(86px, 9999px, 52px, 0);
+    }
+}
+
+.name {
+    font-size: 5rem;
+    color: white;
+    text-shadow: var(--text-glow-red);
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.message {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #b0b0b0;
+    margin-top: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Action Button */
+.action-btn {
+    background: transparent;
+    border: 2px solid var(--neon-red);
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    color: var(--neon-red);
+    font-family: 'Bangers', cursive;
+    letter-spacing: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: inset 0 0 10px rgba(255, 26, 26, 0.2), 0 0 10px rgba(255, 26, 26, 0.2);
+}
+
+.action-btn:hover {
+    background: var(--neon-red);
+    color: var(--bg-dark);
+    box-shadow: 0 0 30px rgba(255, 26, 26, 0.8);
+    transform: scale(1.1);
+}
+
+.hidden-elem {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.show-elem {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Slash Animations (Visual effects on screen entry) */
+.slash-effect {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 4px;
+    background: white;
+    box-shadow: 0 0 20px 5px var(--neon-red);
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.slash-effect.slash-active {
+    animation: slashStrike 0.4s cubic-bezier(0.1, 1, 0.1, 1) forwards;
+}
+
+#slash2 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+    box-shadow: 0 0 20px 5px var(--neon-purple);
+}
+
+@keyframes slashStrike {
+    0% {
+        width: 0;
+        opacity: 1;
+    }
+
+    50% {
+        width: 150vw;
+        opacity: 1;
+    }
+
+    100% {
+        width: 150vw;
+        opacity: 0;
+        height: 1px;
+    }
+}
+
+/* Particles Container */
+#particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background: var(--neon-red);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-red);
+    animation: floatUp 3s infinite linear;
+    bottom: -10px;
+    opacity: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(0);
+        opacity: 0;
+    }
+}

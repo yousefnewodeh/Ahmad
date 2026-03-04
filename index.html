@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ahmad! - Epic Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="particles-container"></div>
+    <div class="aura-background"></div>
+
+    <!-- Slash effect overlay -->
+    <div class="slash-effect" id="slash1"></div>
+    <div class="slash-effect" id="slash2"></div>
+
+    <div class="container" id="mainContainer">
+        <!-- Main Card -->
+        <div class="card" id="birthdayCard">
+            <!-- Start UI -->
+            <div id="startUI">
+                <button class="action-btn" id="startBtn">
+                    <span class="btn-text">UNLEASH VIBES</span>
+                </button>
+            </div>
+
+            <!-- Content UI -->
+            <div class="content" id="contentUI" style="display: none;">
+                <div class="power-level hidden-elem" id="powerLevel">POWER LEVEL: OVER 9000!</div>
+                <h1 class="glitch hidden-elem" id="title" data-text="HAPPY BIRTHDAY">HAPPY BIRTHDAY</h1>
+                <h2 class="name hidden-elem" id="name">AHMAD</h2>
+                <p class="message hidden-elem">Another year survived. Your stats have leveled up. Prepare for the next
+                    arc of your journey!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio element linking to the parent folder MP3 -->
+    <audio id="bgm" loop>
+        <source src="../HAPPY Birthday Song, Happy Birthday to You.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
